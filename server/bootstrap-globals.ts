@@ -28,7 +28,7 @@ export class TwilioResponse {
 
 const Runtime = {
   getAssets: () => ({
-    '/auth-handler.js': {
+    '/auth-handler.ts': {
       path: __dirname + '/auth-handler',
     },
   }),
