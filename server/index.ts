@@ -11,7 +11,7 @@ const FE_URI = process.env.REACT_APP_URI ?? 'http://localhost:3000';
 const app = express();
 app.use(express.json());
 
-app.use(cors());
+app.use(cors({ origin: [FE_URI] }));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
