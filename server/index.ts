@@ -1,9 +1,9 @@
 import './bootstrap-globals';
 import { createExpressHandler } from './createExpressHandler';
 import express, { RequestHandler } from 'express';
-import path from 'path';
 import { ServerlessFunction } from './types';
-import cors from 'cors';
+const path = require('path');
+const cors = require('cors');
 
 const PORT = process.env.PORT ?? 4000;
 const FE_URI = process.env.REACT_APP_URI ?? 'http://localhost:3000';
