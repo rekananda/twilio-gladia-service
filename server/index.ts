@@ -1,22 +1,16 @@
 import './bootstrap-globals';
 import { createExpressHandler } from './createExpressHandler';
 import express, { RequestHandler } from 'express';
-import { ServerlessFunction } from './types';
-const path = require('path');
+import path from 'path';
 const cors = require('cors');
+import { ServerlessFunction } from './types';
 
 const PORT = process.env.PORT ?? 4000;
 const FE_URI = process.env.REACT_APP_URI ?? 'http://localhost:3000';
 
 const app = express();
-
-app.use(cors({ origin: [FE_URI] }));
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-API-KEY");
-  next();
-});
+app.use(express.json());
+app.use(cors());
 
 // This server reuses the serverless endpoints from the "plugin-rtc" Twilio CLI Plugin, which is used when the "npm run deploy:twilio-cli" command is run.
 // The documentation for this endpoint can be found in the README file here: https://github.com/twilio-labs/plugin-rtc
